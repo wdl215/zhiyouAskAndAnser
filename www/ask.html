@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>提问</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="layer/layer.js"></script>
+    <style>
+        body,html{
+            margin: 0;
+            padding: 0;
+        }
+        .wrapper {
+            width: 100%;
+            height: 700px;
+            margin: 0 auto;
+        }
+
+        .bar {
+            width: 100%;
+            height: 60px;
+            background: black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: darkgrey;
+        }
+
+        .back, .home {
+            height: 60%;
+        }
+
+        form {
+            width: 100%;
+            /*background-color: wheat;*/
+            text-align: center;
+        }
+		.file{
+			clear: both;
+			text-decoration: none;
+			color: black;
+			border: 1px solid gray;
+			width: 68%; 
+			height: 200px;
+			margin-top: 20px;
+			border-radius: 5px;
+			padding: 10px;
+		}
+        button {
+            width: 70%;
+            height: 40px;
+            border-radius: 5px;
+            border: 1px solid grey;
+            margin-top: 20px;
+        }
+		img{
+        	cursor: pointer;
+        }
+
+    </style>
+
+
+</head>
+<body>
+<section class="wrapper">
+    <section class="bar">
+        <img src="后退.png" alt="" class="back"/>
+        <h3>提问</h3>
+        <img src="主页.png" alt="" class="home"/>
+    </section>
+    <section class="myself">
+        <form action="/reg" method="post">
+        	<textarea class="file" name="file" placeholder="请详细描述您的提问的内容"></textarea>
+            <button type="submit" id="btn">上传头像</button>
+        </form>
+    </section>
+</section>
+</body>
+
+<script>
+	$('.file').click(function(){
+		this.nextElementSibling.click()
+	})
+	$('img').click(function(){
+		location.href = "noteShow.html"
+	})
+</script>
+
+</html>
+
+
+
+
+
+
