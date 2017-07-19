@@ -36,7 +36,7 @@
         }
 
         input[type=text], select, button {
-            width: 90%;
+            width: 70%;
             height: 40px;
             border-radius: 5px;
             border: 1px solid grey;
@@ -66,7 +66,7 @@
         <form action="/log" method="post">
             <input type="text" placeholder="&emsp;请填写昵称" name="name" id="name"/><br/>
             <input type="text" placeholder="&emsp;请填写密码" name="pwd" id="pwd"/><br/>
-            <button type="button" id="bt">登录</button>
+            <button type="button" id="bt" style="background: green;color: white">登录</button>
         </form>
     </section>
 </section>
@@ -75,12 +75,12 @@
 
 <script>
     $('.home').click(function () {
-        location.href = 'index.html'
-    })
+        location.href = 'res.html'
+    });
 
     $('.back').click(function () {
-        location.href = 'index.html'
-    })
+        location.href = 'res.html'
+    });
 
     $('button').click(function () {
         $('form').eq(0).submit();
@@ -105,7 +105,9 @@
                 if (res.isTrue == 0) {
                     layer.tips('登录成功！', '#bt');
                     //跳转至留言页面
-                    /**************/
+                    location.href = 'index.html?login='+name;
+
+
                 } else if (res.isTrue == 1) {
                     layer.tips('密码错误！', '#pwd');
                 } else if (res.isTrue == 2) {

@@ -49,10 +49,12 @@
         }
 
         input[type=radio] {
-            margin: 25px 0 0 40px;
+            margin: 25px 0 0 15%;
         }
 
-
+        img{
+            cursor: pointer;
+        }
     </style>
 
 
@@ -76,7 +78,7 @@
                 <option value="Android">Android</option>
                 <option value="HTML5">HTML5</option>
             </select><br/>
-            <button type="button" id="btn">注册</button>
+            <button type="button" id="btn" style="background: green;color: white">注册</button>
         </form>
     </section>
 </section>
@@ -113,7 +115,7 @@
                     success: function (res) {
                         console.log(res.result);
                         if(res.result) {
-                            layer.tips('注册成功！', '#btn');
+                            layer.tips('注册成功!', '#btn');
                         }else{
                             layer.tips('用户已经存在！', '#name');
                         }
@@ -132,7 +134,7 @@
     })
 
     $('.back').click(function () {
-        location.href = 'login.html'
+        location.href = 'res.html'
     })
 
     $('.home').click(function () {

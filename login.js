@@ -47,21 +47,39 @@ app.post('/log', function (req, res) {
         if (name == infos[i].name) {
             existUser = i;
             if (pwd == infos[i].pwd) {
-                res.send({
+                return  res.send({
                     isTrue: 0 //用户存在，密码正确
                 })
             } else {
-                res.send({
+                return  res.send({
                     isTrue: 1  //用户密码错误
                 })
             }
         } else {
-            res.send({
+            return res.send({
                 isTrue: 2 //用户不存在
             })
         }
     }
 })
+
+//图片保存
+var storage = multer.diskStorage({
+    destination:'www/img/',
+    filename: function (req, file, cb) {
+        cb(null,file.originalname);
+    }
+});
+
+var upload = multer({storage:storage});
+app.post('/self',upload.array('self',1), function (req, res) {
+    var photo = req.body.self;
+    res.send({
+        state:true
+    })
+})
+
+
 
 
 app.listen(9999, function () {

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <style>
+
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrapper {
+            width: 100%;
+            height: 700px;
+            margin: 0 auto;
+        }
+
+        .bar {
+            width: 100%;
+            height: 60px;
+            background: black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: darkgrey;
+        }
+
+        .bar div {
+            font-size: 20px;
+            line-height: 60px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .bar div:nth-child(1) {
+            width: 20%;
+            height: 100%;
+            padding-left: 10px;
+        }
+
+        .bar div:nth-child(2) {
+            width: 65%;
+            height: 100%;
+            text-align: right;
+            line-height: 60px;
+
+        }
+
+        .bar div:nth-child(3) {
+            width: 15%;
+            height: 100%;
+            line-height: 60px;
+            text-align: right;
+            padding-right: 10px;
+        }
+
+        input[type=text], select, button {
+            width: 70%;
+            height: 40px;
+            border-radius: 5px;
+            border: 1px solid grey;
+            margin-top: 20px;
+        }
+
+        .glyphicon-plus:before {
+            position: relative;
+            top: 1px;
+        }
+
+        .glyphicon-user:before {
+            position: relative;
+            top: 1px;
+        }
+        .divTip{
+            width: 100px;
+            border: 1px solid grey;
+            border-radius: 3px;
+            float: right;
+            box-shadow: 0 0 20px grey;
+            display: none;
+        }
+        ul{
+            clear: both;
+            padding: 0;
+            margin: 0;
+        }
+        li{
+            list-style-type: none;
+            width: 100%;
+            text-align: center;
+            line-height: 35px;
+            cursor: pointer;
+        }
+        li:hover{
+            background: #B9D3EE;
+            color: orange;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<section class="wrapper">
+    <section class="bar">
+        <div>智游教育</div>
+        <div class="glyphicon glyphicon-plus" id="ask">提问</div>
+        <div class="glyphicon glyphicon-user" id="login">登录</div>
+    </section>
+    <div class="divTip">
+        <ul>
+            <li style="height: 35px;" id="self">个人信息</li>
+            <li style="border-top: 1px solid grey" id="exit">退出</li>
+        </ul>
+    </div>
+</section>
+
+<script>
+    var url = '';
+    GetRequest();
+    function GetRequest() {
+        url = location.search;
+        console.log(url);
+        if(url.length>0) {
+            var name = url.split('=')[1];
+            $('#login').text(name);
+            //弹出弹窗
+            $('#login').click(function () {
+                $('.divTip').toggle();
+            });
+        }else {
+            //登录
+            $('#login').click(function () {
+                location.href = 'login.html';
+            });
+        }
+    }
+
+    //点击个人信息
+    $('#self').click(function () {
+        location.href = 'myself.html';
+    })
+
+    //退出
+    $('#exit').click(function () {
+        $('#login').text('登录');
+        location.search = '';
+    })
+
+    //提问
+    $('#ask').click(function () {
+        location.href = 'ask.html';
+    });
+
+
+
+
+</script>
+
+</body>
+</html>
